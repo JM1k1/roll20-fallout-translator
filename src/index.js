@@ -2,7 +2,7 @@ import { translateElements, observeDynamicTranslations } from "./translator.js";
 import { injectFont, patchFont, injectCSS } from "./css-utils.js";
 
 import translationCSS from "inline:../assets/translation.css";
-import charsheetFixCSS from "inline:../assets/charsheet-fix.css";
+import charsheetFixCSS from "inline:../assets/layout-hotfix.css";
 
 /** @constant {string[]} */
 const TRANSLATION_SELECTORS = [
