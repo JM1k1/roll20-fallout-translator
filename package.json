@@ -1,0 +1,26 @@
+{
+  "name": "roll20-fallout-translator",
+  "version": "1.0.0",
+  "description": "Русификатор Fallout Character Sheet для Roll20",
+  "main": "dist/roll20-fallout-translator.user.js",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "clean": "rm -rf dist/*"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5",
+    "esbuild-plugin-inline-import": "^1.1.0"
+  },
+  "author": "Yuliy Mitryashkin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JM1k1/roll20-fallout-translator.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/JM1k1/roll20-fallout-translator/issues"
+  },
+  "homepage": "https://github.com/JM1k1/roll20-fallout-translator#readme"
+}
