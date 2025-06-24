@@ -1,6 +1,6 @@
 {
   "name": "roll20-fallout-translator",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Русификатор Fallout Character Sheet для Roll20",
   "main": "dist/roll20-fallout-translator.user.js",
   "type": "module",

@@ -13,20 +13,6 @@ export function injectCSS(cssText) {
 }
 
 /**
- * Загружает CSS-файл через <link>.
- *
- * @param {string} url - URL на CSS-ресурс.
- * @returns {HTMLLinkElement} Созданный элемент <link>.
- */
-export function injectFont(fontUrl) {
-  const LinkElement = document.createElement("link");
-  LinkElement.rel = "stylesheet";
-  LinkElement.href = fontUrl;
-  document.head.appendChild(LinkElement);
-  return LinkElement;
-}
-
-/**
  * Рекурсивно обновляет значения шрифта в списке CSS-правил.
  *
  * @param {CSSRuleList} rules - Список CSS-правил для обхода.

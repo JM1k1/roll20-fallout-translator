@@ -1,10 +1,16 @@
 import { translateElements, observeDynamicTranslations } from "./translator.js";
-import { injectFont, patchFont, injectCSS } from "./css-utils.js";
+import { patchFont, injectCSS } from "./css-utils.js";
 
 import translationCSS from "inline:../assets/translation.css";
-import charsheetFixCSS from "inline:../assets/layout-hotfix.css";
+import layoutFixCSS from "inline:../assets/layout-fix.css";
+import fontCSS from "inline:../assets/font.css";
 
-/** @constant {string[]} */
+const CSS_ASSETS = {
+  translation: translationCSS,
+  layoutFix: layoutFixCSS,
+  font: fontCSS,
+};
+
 const TRANSLATION_SELECTORS = [
   "[data-i18n]",
   "[data-i18n-placeholder]",
@@ -15,11 +21,6 @@ const TRANSLATION_SELECTORS = [
   'span[name^="attr_pc_"]',
 ];
 
-/** @constant {string} */
-const FONT_URL =
-  "https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@1,700&display=swap";
-
-/** @constant {MutationObserverInit} */
 const OBSERVER_CONFIG = {
   childList: true,
   attributes: true,
@@ -27,11 +28,9 @@ const OBSERVER_CONFIG = {
   subtree: true,
 };
 
-injectFont(FONT_URL);
-patchFont(document, "sriracha", "balsamiq sans");
+Object.values(CSS_ASSETS).forEach(injectCSS);
 
-injectCSS(translationCSS);
-injectCSS(charsheetFixCSS);
+// patchFont(document, "sriracha", FONT.family);
 
 const charsheet = document.querySelector(".charsheet");
 if (charsheet) {
