@@ -11,7 +11,6 @@
 // @updateURL    https://jm1k1.github.io/roll20-fallout-translator/dist/roll20-fallout-translator.user.js
 // @downloadURL  https://jm1k1.github.io/roll20-fallout-translator/dist/roll20-fallout-translator.user.js
 // @match        https://app.roll20.net/editor/*
-// @match        https://app.roll20.net/editor/character/*
 // @run-at       document-idle
 // @grant        none
 // ==/UserScript==

@@ -1,4 +1,4 @@
-import translations from "../assets/translation.json" 
+import translations from "../assets/translation.json";
 
 const TRANSLATABLE_ATTRIBUTES = ["placeholder", "title"];
 
@@ -9,11 +9,14 @@ const TRANSLATABLE_ATTRIBUTES = ["placeholder", "title"];
 export function translateElement(element) {
   if (!(element instanceof HTMLElement)) return;
 
-  const text = element.innerText?.trim();
-  const translatedText = translations[text];
+  const text = element.innerText;
+
+  const key = text.replace(/^\P{L}+|\P{L}+$/gu, "").trim();
+
+  const translatedText = translations[key];
 
   if (translatedText) {
-    element.innerText = translatedText;
+    element.innerText = text.replace(key, translatedText);
   }
 
   for (const attribute of TRANSLATABLE_ATTRIBUTES) {
@@ -55,8 +58,9 @@ export function translateElements(container, selectors) {
  * @param {MutationObserverInit} [options]
  * @returns {MutationObserver}
  */
-export function observeDynamicTranslations(
+export function initTranslation(
   target,
+  selectors,
   config = {
     childList: true,
     attributes: true,
@@ -64,12 +68,12 @@ export function observeDynamicTranslations(
     subtree: true,
   }
 ) {
+  translateElements(target, selectors);
+
   const observer = new MutationObserver((mutations) => {
     for (const mutation of mutations) {
       if (mutation.type !== "childList") continue;
-      mutation.addedNodes.forEach((node) => {
-        translateElement(node.parentElement);
-      });
+      translateElements(target, selectors);
     }
   });
 
